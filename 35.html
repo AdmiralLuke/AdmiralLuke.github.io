@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+    <title>TextToWAT.js</title>
+    <link rel="stylesheet" href="35.css">
+    <body>
+        <h1>Text to WAT.js</h1>
+        <p>Input text here: (only contains: a, d, e, f, i, l, n, r, s, t, u) </p>
+        <input id = "inp1" class="input1" name = "spind" value = "" type="text"></input>
+        <button id="btn1" onclick="convertToJS()">Convert</button>
+        <textarea id="out1" class="input2"></textarea>
+        <p class="downer">Output:</p>
+        <button id="btn2" onclick="toClip()" class = "button2">Copy to clipboard</button>
+        <button id="btn3" onclick="clearW()" class = "button3">Clear</button>
+        <p class="errorMsg" id="err"></p>
+
+        <script>
+            function convertToJS() {
+                let inp = document.getElementById("inp1");
+                let outp = document.getElementById("out1");
+                let erro = document.getElementById("err");
+
+                let txt = inp.value;
+                erro.innerHTML = "";
+                outp.value = "";
+                if (txt.length == 0) {
+                    erro.innerHTML = "^ Please input a text ^";
+                    return;
+                }
+
+                let o = "";
+                for (let i = 0; i < txt.length; i++) {
+                    switch (txt[i]) {
+                        case "a": 
+                            o += "(![] + [])[+!+[]]"
+                            break;
+                        case "d":
+                            // undefined
+                            o += "([][[]] + [])[+!+[] + !+[]]";
+                            break;
+                        case "e":
+                            o += "(!![] + [])[+!+[] + !+[] + !+[]]";
+                            break;
+                        case "f":
+                            o += "(![] + [])[+[]]";
+                            break;
+                        case "i":
+                            o += "([![]] + [][[]])[+!+[] + [+[]]]";
+                            break;
+                        case "l":
+                            o += "(![] + [])[+!+[] + !+[]]";
+                            break;
+                        case "n":
+                            o += "([][[]] + [])[+!+[]]";
+                            break;
+                        case "r": 
+                            o += "(!![] + [])[+!+[]]";
+                            break;
+                        case "s":
+                            o += "(![] + [])[+!+[] + !+[] + !+[]]";
+                            break;
+                        case "t":
+                            o += "(!![] + [])[+[]]";
+                            break;
+                        case "u": 
+                            o += "(!![] + [])[+!+[] + !+[]]";
+                            break;
+                        default:
+                            erro.innerHTML = "Invalid input with invalid symbols / letters";
+                            return;
+                    }
+                    if (i < txt.length - 1) {
+                        o += " + "
+                    }
+                }
+                outp.value = o;
+
+            }
+
+
+            function clearW() {
+                let inp = document.getElementById("inp1");
+                let outp = document.getElementById("out1");
+                let erro = document.getElementById("err");
+
+                inp.value = "";
+                outp.value = "";
+                erro.innerHTML = "";
+            }
+
+            function toClip() {
+                let outp = document.getElementById("out1");
+                let erro = document.getElementById("err");
+
+                erro.innerHTML = "";
+
+                if (outp.value.length == 0) {
+                    erro.innerHTML = "Nothing there to copy";
+                    return;
+                }
+                navigator.clipboard.writeText(outp.value).then(function() {
+                    erro.innerHTML = "success";
+                }, function() {
+                    erro.innerHTML = "fail";
+                });
+            }
+
+            function convertToText() {
+                let inp = document.getElementById("inp1");
+                let outp = document.getElementById("out1");
+                let erro = document.getElementById("err");
+
+
+                erro.innerHTML = "";
+                inp.value = "";
+                
+                if (outp.value.length == 0) {
+                    erro.innerHTML = "v Input JS v";
+                    return;
+                }
+
+                inp.value = [outp.value][0];
+            }
+        </script>
+    </body>
+</html>
