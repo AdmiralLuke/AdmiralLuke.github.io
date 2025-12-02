@@ -23,7 +23,7 @@ jobs:
           node-version: "24"
 
       - name: Install docsy prerequisites
-        run: npm install -g postcss-cli autoprefixer
+        run: npm install -g postcss-cli autoprefixer postcss-import
 
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v3
@@ -68,7 +68,7 @@ jobs:
           node-version: "24"
 
       - name: Install docsy prerequisites
-        run: npm install -g postcss-cli autoprefixer
+        run: npm install -g postcss-cli autoprefixer postcss-import
 
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v3
